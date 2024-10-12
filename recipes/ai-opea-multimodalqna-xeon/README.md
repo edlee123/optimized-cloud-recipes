@@ -77,9 +77,9 @@ To change the models, stop the containers by running the following:
 
 `docker compose -f /opt/GenAIExamples/MultimodalQnA/docker_compose/intel/cpu/xeon/compose.yaml down`
 
-Modify the file `/etc/profile.d/opea.sh` to change the models used. After making the changes you want, re-source the environment variables by running:
+Modify the file `opea.sh` to change the models used. After making the changes you want, re-source the environment variables by running:
 
-`. /etc/profile.d/opea.sh`
+`opea.sh`
 
 Then relaunch the containers with:
 
