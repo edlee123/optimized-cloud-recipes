@@ -63,6 +63,8 @@ sudo ansible-playbook recipes/ai-opea-multimodalqna-xeon/recipe.yml
 
 ## Accessing the demo
 
+0. Open ports [described here](https://github.com/opea-project/GenAIExamples/tree/main/MultimodalQnA/docker_compose/intel/cpu/xeon).
+
 1. Open a browser and go to 'http://yourpublicip:5174'
 
 2. This will launch the UI for the demo.
