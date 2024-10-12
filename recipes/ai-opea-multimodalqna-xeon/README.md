@@ -56,7 +56,7 @@ nano recipes/ai-opea-multimodalqna-xeon/opea.sh
 source recipes/ai-opea-multimodalqna-xeon/opea.sh
 
 # Run the recipe
-sudo ansible-playbook recipes/ai-opea-multimodalqnaqna-xeon/recipe.yml
+sudo ansible-playbook recipes/ai-opea-multimodalqna-xeon/recipe.yml
 
 # Logs at 'tail -f 10 /var/log/syslog'
 ```
