@@ -53,7 +53,7 @@
     - name: Launch the OPEA containers
       ansible.builtin.shell:
         cmd: |
-          . opea.sh
+          . .\opea.sh
           cd /opt/GenAIExamples/MultimodalQnA/docker_compose/intel/cpu/xeon
           docker compose -f compose.yaml up -d
       environment:
