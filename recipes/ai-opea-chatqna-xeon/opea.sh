@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export host_ip=$(hostname -I | awk '{print $1}')
+export public_ip=$(curl -s ifconfig.me)
+
 export no_proxy=
 export http_proxy=
 export https_proxy=
