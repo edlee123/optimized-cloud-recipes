@@ -53,8 +53,8 @@
     - name: Launch the OPEA containers
       ansible.builtin.shell:
         cmd: |
-          . /etc/profile.d/opea.sh
-          cd /opt/GenAIExamples/ChatQnA/docker_compose/intel/cpu/xeon
+          . opea.sh
+          cd /opt/GenAIExamples/MultimodalQnA/docker_compose/intel/cpu/xeon
           docker compose -f compose.yaml up -d
       environment:
         TAG: "{{ TAG }}"
