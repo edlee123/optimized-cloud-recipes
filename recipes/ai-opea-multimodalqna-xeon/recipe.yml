@@ -49,12 +49,33 @@
     - name: Clone the GenAIExamples repo
       git:
         repo: https://github.com/lucasmelogithub/GenAIExamples.git #To be updated to 'opea-project' org later per Lucas Melo. Required to use new React UI on compose.yaml
-        dest: /opt/GenAIExamples       
+        dest: /opt/GenAIExamples
+
+    - name: Get the sudo user
+      set_fact:
+        sudo_user: "{{ ansible_env.SUDO_USER }}"
+
+    - name: Get the home directory of the sudo user
+      ansible.builtin.command: "getent passwd {{ sudo_user }}"
+      register: sudo_user_info
+
+    - name: Set the home directory of the sudo user
+      set_fact:
+        sudo_user_home: "{{ sudo_user_info.stdout.split(':')[5] }}"
+
     - name: Launch the OPEA containers
-      ansible.builtin.shell:
-        cmd: |
-          . opea.sh
-          cd /opt/GenAIExamples/MultimodalQnA/docker_compose/intel/cpu/xeon
-          docker compose -f compose.yaml up -d
+      tags:
+        - launch
+      shell:
+        cmd: ".  /home/{{ ansible_env.SUDO_USER or ansible_user_id }}/optimized-cloud-recipes/recipes/ai-opea-multimodalqna-xeon/opea.sh
+                cd /opt/GenAIExamples/DocSum/docker_compose/intel/cpu/xeon
+                docker compose -f compose.yaml up -d"
+        async: 45
+        poll: 5
+        ansible_command_timeout: 7200  # can use docker compose logs to monitor separately
       environment:
         TAG: "{{ TAG }}"
+
+    - name:
+      debug: car=screen_out.stdout_lines
+

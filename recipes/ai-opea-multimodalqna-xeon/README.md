@@ -50,13 +50,20 @@ sudo apt install ansible -y
 
 # Clone the repo
 git clone https://github.com/intel/optimized-cloud-recipes.git
+git clone https://github.com/edlee123/optimized-cloud-recipes
+git clone  https://github.com/edlee123/optimized-cloud-recipes/tree/opea-multimodalqna-xeon
+git clone -b opea-multimodalqna-xeon https://github.com/edlee123/optimized-cloud-recipes
 
 # Modify the opea.sh file and set the `host_ip` variable to your host's IP and uncomment and set your Huggingface Token, then source the opea.sh file
-nano recipes/ai-opea-multimodalqna-xeon/opea.sh
-source recipes/ai-opea-multimodalqna-xeon/opea.sh
+nano optimized-cloud-recipes/recipes/ai-opea-multimodalqna-xeon/opea.sh
+source optimized-cloud-recipes/recipes/ai-opea-multimodalqna-xeon/opea.sh
 
 # Run the recipe
-sudo ansible-playbook recipes/ai-opea-multimodalqna-xeon/recipe.yml
+sudo ansible-playbook optimized-cloud-recipes/recipes/ai-opea-multimodalqna-xeon/recipe.yml
+
+sudo ansible-playbook optimized-cloud-recipes/recipes/ai-opea-multimodalqna-xeon/recipe.yml --tags "launch"
+
+ansible-playbook example.yml --tags "launch"
 
 # Logs at 'tail -f 10 /var/log/syslog'
 ```
